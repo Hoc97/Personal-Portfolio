@@ -1,7 +1,7 @@
 import { Modal } from 'antd';
 import { useState } from 'react';
 import { IoLogoTwitter } from 'react-icons/io';
-import { AiFillFacebook } from 'react-icons/ai';
+import { MdEditNote } from 'react-icons/md';
 import { BsArrowRight, BsMenuApp } from 'react-icons/bs';
 
 interface IProject {
@@ -56,9 +56,9 @@ const Projects = () => {
             }
         },
         {
-            image: <AiFillFacebook color='#1194f5' />,
-            title: 'Facebook Clone',
-            content: 'Website mạng xã hội giúp kết nối mọi người có cùng chung sở thích',
+            image: <MdEditNote color='#1194f5' />,
+            title: 'Note App',
+            content: 'Website hỗ trợ ghi chú tiện lợi cho công việc, cuộc sống',
             detail: {
                 description: '2.Xây dụng mạng xã hội giúp kết nối mọi người',
                 technology: {

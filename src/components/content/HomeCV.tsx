@@ -1,10 +1,13 @@
 import { TypeAnimation } from 'react-type-animation';
 import img from '@/assets/img/hero/img.jpg';
 
-const HomeCV = () => {
+interface IProps {
+    setActiveTab: (value: string) => void;
+}
+const HomeCV = ({ setActiveTab }: IProps) => {
     const scrollTo = (id: string) => {
         document.getElementById(id)?.scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
         });
     };
     return (
@@ -35,7 +38,6 @@ const HomeCV = () => {
                                                 2000, // Waits 2s
                                                 'Web Developer', // Deletes 'One' and types 'Two'
                                                 2000,
-
                                             ]}
                                             wrapper='span'
                                             cursor={true}
@@ -46,7 +48,13 @@ const HomeCV = () => {
                             </div>
                         </div>
                         <div className='arlo_tm_arrow_wrap bounce anchor'>
-                            <a style={{ cursor: 'pointer' }} onClick={() => scrollTo('about')}>
+                            <a
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => {
+                                    setActiveTab('about');
+                                    scrollTo('about');
+                                }}
+                            >
                                 <i className='xcon-angle-double-down'></i>
                             </a>
                         </div>

@@ -181,7 +181,6 @@
 /*	15) ARLO MEDIA QUERIES (FOR SMALL DEVIVES)
 /*---------------------------------------------------*/
 html {
-    overflow-x: hidden;
     padding: 0px;
     margin: 0px;
 }
@@ -412,13 +411,15 @@ img.svg {
                         transition: all 0.3s ease;
                     }
 
-                    &:hover {
+                    &:hover,
+                    &.active {
                         color: #e3872d;
 
                         &:before {
                             width: 35px;
                         }
                     }
+
                 }
             }
         }
@@ -741,7 +742,7 @@ img.svg {
     }
 
     .overlay_image.hero {
-        background-image: url(@/assets/img/hero/2.jpg);
+        background-image: url(@/assets/img/hero/5.jpg);
     }
 
     .overlay_color.hero {
@@ -753,7 +754,7 @@ img.svg {
     }
 
     .overlay_image.testimonial {
-        background-image: url(../img/hero/3.jpg);
+        background-image: url(@/assets/img/hero/3.jpg);
     }
 
     .overlay_color.testimonial {
@@ -825,8 +826,6 @@ img.svg {
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: center;
-
-
                 }
             }
 
@@ -1158,7 +1157,7 @@ img.svg {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     background-color: #f6f7fd;
-    padding-top: 50px;
+    padding-top: 100px;
 
     &:last-child {
         padding-bottom: 90px;
@@ -1424,7 +1423,9 @@ img.svg {
 
                 .inner {
                     width: 100%;
-                    height: auto;
+                    height: inherit;
+                    max-height: 265px;
+                    min-height: 265px;
                     clear: both;
                     float: left;
                     position: relative;
@@ -1439,6 +1440,9 @@ img.svg {
                     -webkit-box-sizing: border-box;
                     -moz-box-sizing: border-box;
                     box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
 
                     &:hover {
                         top: -5px;
@@ -1729,7 +1733,6 @@ img.svg {
         height: auto;
         clear: both;
         text-align: center;
-        cursor: e-resize;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -2515,7 +2518,7 @@ img.svg {
 .arlo_tm_universal_box_wrap.particle {
     height: 100vh;
     position: relative;
-    background-image: url(../img/hero/2.jpg);
+    background-image: url(@/assets/img/hero/5.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2536,7 +2539,7 @@ img.svg {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url(../img/hero/2.jpg);
+    background-image: url(@/assets/img/hero/5.jpg);
     position: relative;
 
     .overlay {
@@ -2595,7 +2598,7 @@ img.svg {
         }
 
         .overlay_image.top {
-            background-image: url(../img/hero/2.jpg);
+            background-image: url(@/assets/img/hero/5.jpg);
         }
 
         .overlay_color.top {
@@ -3020,7 +3023,7 @@ img.svg {
         height: auto;
         clear: both;
         float: left;
-        padding: 30px 20px;
+        padding: 20px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -3229,6 +3232,11 @@ img.svg {
                     font-family: 'Montserrat';
                     font-weight: 600;
                     font-size: 19px;
+
+                    &.active {
+                        color: #e3872d;
+
+                    }
                 }
             }
         }
@@ -3340,6 +3348,7 @@ img.svg {
         .rightbox {
             width: 100%;
             padding-left: 0px;
+            margin-bottom: 60px;
         }
     }
 
@@ -3372,6 +3381,10 @@ img.svg {
 
     .arlo_tm_mobile_header_wrap {
         display: block;
+    }
+
+    .owl-stage {
+        display: flex;
     }
 }
 
@@ -3487,20 +3500,6 @@ img.svg {
         }
     }
 
-    .arlo_tm_title_holder {
-        &:before {
-            display: none;
-        }
-
-        h3 {
-            padding-left: 0px;
-        }
-
-        span {
-            padding-left: 0px;
-        }
-    }
-
     .arlo_tm_counter_list {
         li {
             width: 100%;
@@ -3523,4 +3522,45 @@ img.svg {
     .arlo_tm_counter_wrap {
         padding: 94px 0px 48px 0px;
     }
+
+    .arlo_tm_leftpart_wrap {
+        left: -300px;
+
+        .arlo_tm_resize {
+            right: 0px;
+
+            &.opened {
+                right: 0px;
+            }
+        }
+    }
+
+    .arlo_tm_rightpart {
+        padding-left: 0px;
+    }
+
+    .arlo_tm_about_wrapper_all,
+    .arlo_tm_skills_wrap,
+    .arlo_tm_services_wrap {
+        padding-top: 150px;
+    }
+}
+
+
+// //Scrollbar CSS
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 10px;
+    height: 10px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #ffa400, #00aefd);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+
 }

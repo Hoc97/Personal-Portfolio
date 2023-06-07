@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 const Portfolio = () => {
     const [showLeftPart, setShowLeftPart] = useState<boolean>(true);
+    const [activeTab, setActiveTab] = useState<string>('home');
+
     return (
         // <!-- WRAPPER ALL -->
         <div className='arlo_tm_wrapper_all'>
@@ -24,7 +26,7 @@ const Portfolio = () => {
             {/* <!-- /PRELOADER --> */}
 
             {/* <!-- MOBILE MENU --> */}
-            <Menu />
+            <Menu activeTab={activeTab} setActiveTab={setActiveTab} />
             {/* <!-- /MOBILE MENU --> */}
 
             {/* <!-- CONTENT --> */}
@@ -33,16 +35,21 @@ const Portfolio = () => {
                 <LeftPart
                     showLeftPart={showLeftPart}
                     setShowLeftPart={setShowLeftPart}
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
                 />
                 {/* <!-- /LEFTPART --> */}
 
                 {/* <!-- RIGHTPART --> */}
-                <RightPart
-                    showLeftPart={showLeftPart}
-                />
+                <RightPart showLeftPart={showLeftPart} setActiveTab={setActiveTab} />
                 {/* <!-- /RIGHTPART --> */}
 
-                <FloatButton.BackTop visibilityHeight={1000} tooltip={<div>Scroll to top</div>} duration={900} />
+                <FloatButton.BackTop
+                    onClick={() => setActiveTab('home')}
+                    visibilityHeight={1000}
+                    tooltip={<div>Scroll to top</div>}
+                    duration={900}
+                />
             </div>
         </div>
     );

@@ -1,19 +1,46 @@
+import { useEffect } from 'react';
 import About from './content/About';
 import Contact from './content/Contact';
 import HomeCV from './content/HomeCV';
 import Projects from './content/Projects';
 import Skills from './content/Skills';
 
-
 interface IProps {
     showLeftPart: boolean;
+    setActiveTab: (value: string) => void;
 }
-const RightPart = ({ showLeftPart }: IProps) => {
+const RightPart = ({ showLeftPart, setActiveTab }: IProps) => {
+    useEffect(() => {
+        const toggleVisible = () => {
+            // console.log(window.pageYOffset );
+
+            const timer = setTimeout(() => {
+                if (window.pageYOffset < 800) {
+                    setActiveTab('home');
+                }
+                if (window.pageYOffset >= 800) {
+                    setActiveTab('about');
+                }
+                if (window.pageYOffset >= 1600) {
+                    setActiveTab('skills');
+                }
+                if (window.pageYOffset >= 2400) {
+                    setActiveTab('projects');
+                }
+                if (window.pageYOffset >= 3400) {
+                    setActiveTab('contact');
+                }
+                clearTimeout(timer);
+            }, 1000);
+        };
+        window.addEventListener('scroll', () => toggleVisible());
+        return () => window.removeEventListener('scroll', () => toggleVisible());
+    }, []);
     return (
         <>
             <div className={`arlo_tm_rightpart ${showLeftPart ? '' : 'opened'}`}>
                 <div className='rightpart_inner'>
-                    <HomeCV />
+                    <HomeCV setActiveTab={setActiveTab} />
 
                     {/* <!-- ABOUT --> */}
                     <About />
@@ -27,7 +54,6 @@ const RightPart = ({ showLeftPart }: IProps) => {
                     <Projects />
                     {/* <!-- /Projects --> */}
 
-
                     {/* <!-- TESTIMONIALS --> */}
                     <div className='arlo_tm_section' id='testimonials'>
                         <div className='arlo_tm_testimonials_wrapper_all'>
@@ -40,57 +66,37 @@ const RightPart = ({ showLeftPart }: IProps) => {
                                     <div className='arlo_tm_testimonial_wrap'>
                                         <div className='container'>
                                             <div className='carousel_wrap'>
-                                                <ul className='owl-carousel'>
-                                                    <li className='item'>
-                                                        <div className='inner'>
-                                                            <div className='quotebox_wrap'>
-                                                                <i className='xcon-quote-left'></i>
-                                                            </div>
-                                                            <div className='definitions_wrap'>
-                                                                <p>
-                                                                    “Arlo team are easy to work with and helped me make
-                                                                    amazing websites in a short amount of time. Thanks
-                                                                    guys for works.”
-                                                                </p>
-                                                            </div>
-                                                            <div className='name_holder'>
-                                                                <p>Antonio Baraley, CEO Founder</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li className='item'>
-                                                        <div className='inner'>
-                                                            <div className='quotebox_wrap'>
-                                                                <i className='xcon-quote-left'></i>
-                                                            </div>
-                                                            <div className='definitions_wrap'>
-                                                                <p>
-                                                                    “We were looking for a logo with a touch of
-                                                                    modernism. Arlo grasped our needs and produced a
-                                                                    stunning design.”
-                                                                </p>
-                                                            </div>
-                                                            <div className='name_holder'>
-                                                                <p>Calena Gomez, AOC Designer</p>
+                                                <ul className='owl-carousel owl-loaded owl-drag'>
+                                                    <div className='owl-stage-outer'>
+                                                        <div
+                                                            className='owl-stage'
+                                                            style={{
+                                                                width: '100%',
+                                                            }}
+                                                        >
+                                                            <div className='owl-item cloned' style={{ width: '730px' }}>
+                                                                <li className='item'>
+                                                                    <div className='inner'>
+                                                                        <div className='quotebox_wrap'>
+                                                                            <i className='xcon-quote-left'></i>
+                                                                        </div>
+                                                                        <div className='definitions_wrap'>
+                                                                            <p>
+                                                                                “My expertise lies in crafting dynamic,
+                                                                                engaging interfaces through writing
+                                                                                clean and optimized code and utilizing
+                                                                                cutting-edge development tools and
+                                                                                techniques.”
+                                                                            </p>
+                                                                        </div>
+                                                                        <div className='name_holder'>
+                                                                            <p>Thái Học, Web developer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li className='item'>
-                                                        <div className='inner'>
-                                                            <div className='quotebox_wrap'>
-                                                                <i className='xcon-quote-left'></i>
-                                                            </div>
-                                                            <div className='definitions_wrap'>
-                                                                <p>
-                                                                    “Awesome to work with Arlo. Good organized, easy to
-                                                                    communicate with, responsive with next iterations.”
-                                                                </p>
-                                                            </div>
-                                                            <div className='name_holder'>
-                                                                <p>Torren Winston, Photographer.</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+                                                    </div>
                                                 </ul>
                                             </div>
                                         </div>

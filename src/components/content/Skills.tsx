@@ -5,6 +5,10 @@ const Skills = () => {
             <div className='arlo_tm_section' id='skills'>
                 <div className='arlo_tm_skills_wrap'>
                     <div className='container'>
+                        <div className='arlo_tm_title_holder'>
+                            <h3>Skills</h3>
+                            <span>It can be what you need</span>
+                        </div>
                         <div className='inner_wrap'>
                             <div className='leftbox'>
                                 <div className='arlo_tm_mini_title_holder'>
